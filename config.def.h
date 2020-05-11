@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -13,7 +13,7 @@ static const char bg1[]	= "#282828";
 static const char bg2[]	= "#3c3836";
 static const char fg0[]	= "#ebdbb2";
 static const char fg1[]	= "#fbf1c7";
-static const char accent[]	= "#689d6a";
+static const char accent[]	= "#fabd2f";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { fg0, bg1, bg0 },
@@ -60,14 +60,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,"-nb", bg0, "-nf", fg0, "-sb", accent, "-sf", bg1, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *findwindowcmd[]  = { "rofi", "-show", "windowcd", "-modi", "windowcd", NULL };
-static const char *volumeup[]  = { "setSinkVolumeDefault.sh", "+5%", NULL };
-static const char *volumedown[]  = { "setSinkVolumeDefault.sh", "-5%", NULL };
-#include <X11/XF86keysym.h>
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_g,      spawn,          {.v = findwindowcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,			XK_y,	   spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -101,8 +96,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ 0, XF86XK_AudioRaiseVolume,	spawn,		{.v =volumeup}},
-	{ 0, XF86XK_AudioLowerVolume,	spawn,		{.v=volumedown}}
 };
 
 /* button definitions */
