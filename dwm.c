@@ -619,6 +619,24 @@ clientmessage(XEvent *e)
 	} else if (cme->message_type == netatom[NetActiveWindow]) {
 		if (c != selmon->sel && !c->isurgent)
 			seturgent(c, 1);
+		//below is non-standard dwm code
+		//focuses window receiving NetActiveWindow with source 2
+		//(2 = pager)
+		//https://specifications.freedesktop.org/wm-spec/wm-spec-1.3.html#idm44927025477296
+		if (cme->data.l[0] == 2) {
+			selmon = c->mon;
+			if (!(selmon->tagset[selmon->seltags] & c->tags)) {
+				for (unsigned int i = 1; (i & TAGMASK); i <<= 1) {
+					if (i & c->tags) {
+						const Arg a = {.ui = i};
+						view(&a);
+						break;
+					}
+				}
+			}
+			focus(c);
+			restack(selmon);
+		}
 	}
 }
 
