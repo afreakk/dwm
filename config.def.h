@@ -75,7 +75,7 @@ static const char *termcmd[]  = { "terminal.sh" };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_w,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,			XK_y,	   spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_y,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_n,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_e,      focusstack,     {.i = -1 } },
