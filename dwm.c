@@ -201,6 +201,7 @@ static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
 static void setlayout(const Arg *arg);
+static void togglelayout(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
@@ -1593,6 +1594,17 @@ setfullscreen(Client *c, int fullscreen)
 		resizeclient(c, c->x, c->y, c->w, c->h);
 		arrange(c->mon);
 	}
+}
+
+void
+togglelayout(const Arg *arg)
+{
+	Arg nxtlayout;
+	if (selmon->lt[selmon->sellt] == &layouts[0])
+		nxtlayout.v = &layouts[2];
+	else
+		nxtlayout.v = &layouts[0];
+	setlayout(&nxtlayout);
 }
 
 void
