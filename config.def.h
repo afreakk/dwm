@@ -1,25 +1,25 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
-static const char *fonts[]          = { "hack:pixelsize=18:antialias=true:autohint=true" };
-static const char dmenufont[]       = "hack:pixelsize=18:antialias=true:autohint=true";
-static const char bg0[]	= "#1d2021";
-static const char bg1[]	= "#282828";
-static const char bg2[]	= "#3c3836";
-static const char fg0[]	= "#ebdbb2";
-static const char fg1[]	= "#fbf1c7";
-static const char accent[]	= "#fabd2f";
-static const char *colors[][3]      = {
+static const char *fonts[]     = { "hack:pixelsize=18:antialias=true:autohint=true" };
+static const char dmenufont[]  = "hack:pixelsize=18:antialias=true:autohint=true";
+static const char bg0[]        = "#1d2021";
+static const char bg1[]        = "#282828";
+static const char bg2[]        = "#3c3836";
+static const char fg0[]        = "#ebdbb2";
+static const char fg1[]        = "#fbf1c7";
+static const char accent[]     = "#fabd2f";
+static const char *colors[][3] = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { fg0, bg0, bg0 },
-	[SchemeSel]  = { accent, bg2, accent },
-	[SchemeTabActive]  = { fg0, bg0,  accent },
-	[SchemeTabInactive]  = { fg0, bg0,  accent }
+	[SchemeNorm]        = { fg0,    bg0, bg0    },
+	[SchemeSel]         = { accent, bg2, accent },
+	[SchemeTabActive]   = { fg0,    bg0, accent },
+	[SchemeTabInactive] = { fg0,    bg0, accent }
 };
 
 /* tagging */
@@ -32,11 +32,11 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 }, */
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.61803398875; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
@@ -54,6 +54,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "[D]",      deck },
 };
 
 /* key definitions */
